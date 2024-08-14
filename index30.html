@@ -14,7 +14,7 @@
     <footer>
         <div>
             <p>&copy; 2024 Privacy Lab30</p>
-            <a href="#" id="cookies-notice-link">Cookies Policy</a> 
+            <a href="#" id="cookies-notice-link" class="ot-sdk-show-settings">Cookies Policy</a> 
             <a href="#" id="privacy-notice-link">Privacy Policy</a>
             <!-- Button to Manage Cookies Preferences -->
             <p>
@@ -23,7 +23,15 @@
         </div>
     </footer>
 
-    <!-- Including the JavaScript files -->
+    <!-- Including OneTrust Script -->
+    <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="01910774-292a-731f-9870-e4edf891f6bb"></script>
+
+    <!-- Initialize OneTrust -->
+    <script type="text/javascript">
+        function OptanonWrapper() { }
+    </script>
+
+    <!-- Including the additional JavaScript files -->
     <script src="script.js"></script>    
     <script src="scriptcookies.js"></script>
 
