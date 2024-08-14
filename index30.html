@@ -10,6 +10,12 @@
        <div>
         <h1>Welcome to my Privacy Lab 30 website for Privacy tool integration testing</h1>
     </div>
+  <div>
+    // Custom button to open the cookie preferences modal
+document.getElementById('manage-cookies-button').addEventListener('click', function() {
+    OneTrust.ToggleInfoDisplay();  // This opens the preferences modal
+});
+</div>
   <footer>
         <p>&copy; 2024 Privacy Lap30</p>
         <a href="#" id="cookies-notice-link">Cookies Policy</a>
