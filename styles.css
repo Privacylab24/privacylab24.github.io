@@ -11,23 +11,34 @@ header {
     border-bottom: 1px solid #ccc;
 }
 
+/* Ensuring the main content is centered */
 .main-content {
     padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 80vh; /* To center the content properly within the viewport */
 }
 
 .container {
     display: flex;
     justify-content: space-between;
+    width: 80%; /* Restrict width so it's centered */
+    margin: 0 auto; /* Center horizontally */
+    align-items: flex-start;
     padding: 20px 0;
 }
 
 .form-container {
-    margin-top: 20px; /* Adjust this to move the form slightly higher */
+    margin-top: 20px;
+    width: 50%; /* You can adjust the width to match your needs */
 }
 
 .video-container {
-    width: 40%;
+    width: 50%;
     text-align: right;
+    padding-left: 20px;
 }
 
 /* Responsive adjustments for mobile screens */
@@ -36,9 +47,14 @@ header {
         flex-direction: column;
     }
 
+    .form-container,
     .video-container {
         width: 100%;
         text-align: center;
+    }
+
+    .video-container {
+        padding-left: 0;
     }
 }
 
