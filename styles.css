@@ -1,28 +1,47 @@
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    font-family: Arial, sans-serif;
 }
 
-.main-content {
-    flex: 1;
-    padding: 20px;
-}
-
-privacy-notice-container {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-}
 header {
     background-color: #f1f1f1;
     padding: 20px;
     text-align: center;
     border-bottom: 1px solid #ccc;
 }
+
+.main-content {
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.form-container {
+    margin-top: 20px; /* Adjust this to move the form slightly higher */
+}
+
+.video-container {
+    width: 40%;
+    text-align: right;
+}
+
+/* Responsive adjustments for mobile screens */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .video-container {
+        width: 100%;
+        text-align: center;
+    }
+}
+
 footer {
     background-color: #f1f1f1;
     padding: 20px;
@@ -37,40 +56,4 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
-}
-
-/* Flexbox container for content and video */
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 20px 0;
-}
-
-/* Content area styling */
-.content {
-    width: 60%; /* Adjust the width of the main content */
-}
-
-/* YouTube video container styling */
-.video-container {
-    width: 40%; /* Adjust the width of the video container */
-    text-align: right;
-}
-
-/* Form container styling to move it slightly higher */
-.form-container {
-    margin-top: 20px; /* Adjust this to move the form slightly higher */
-}
-
-/* Responsive adjustments for mobile screens */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-
-    .content, .video-container {
-        width: 100%;
-        text-align: center;
-    }
 }
