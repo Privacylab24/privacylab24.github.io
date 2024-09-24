@@ -17,7 +17,12 @@ privacy-notice-container {
     background-color: #f9f9f9;
     border: 1px solid #ccc;
 }
-
+header {
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
 footer {
     background-color: #f1f1f1;
     padding: 20px;
@@ -55,7 +60,7 @@ footer a:hover {
 
 /* Form container styling to move it slightly higher */
 .form-container {
-    margin-top: 10px; /* Slightly shift the form upwards, adjust as needed */
+    margin-top: 20px; /* Adjust this to move the form slightly higher */
 }
 
 /* Responsive adjustments for mobile screens */
