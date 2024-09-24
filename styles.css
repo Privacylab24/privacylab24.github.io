@@ -10,12 +10,42 @@ body {
 .content {
     flex: 1;
     display: flex;
+    width: 60%; /* Adjust the width of the main content */
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 20px;
 }
-#privacy-notice-container 
+.container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .video-container {
+            width: 40%; /* Adjust the width of the video container */
+            text-align: right;
+        }
+
+        /* Add responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .content, .video-container {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Style for positioning the form slightly higher */
+        .form-container {
+            margin-top: -30px; /* Adjust the value to move the form higher */
+        }
+
+    </style>
+privacy-notice-container 
 {
     padding: 20px;
     background-color: #f9f9f9;
