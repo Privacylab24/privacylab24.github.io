@@ -168,16 +168,6 @@ function getLoginStatus() {
 // Example: Set the login status to "logged_in"
 setLoginStatus('logged_in');
 
-function setConsentCookie(consent) {
-    document.cookie = `consent_cookie=${consent}; path=/; domain=privacylab24.github.io; expires=${new Date(Date.now() + 365*24*60*60*1000).toUTCString()}; SameSite=Lax`;
-}
-
-function getConsentCookie() {
-    return document.cookie.split('; ').find(row => row.startsWith('consent_cookie=')).split('=')[1];
-}
-
-// Example: Set the consent status to "accepted"
-setConsentCookie('accepted');
 </script>
 
     <!-- Including the additional JavaScript files -->
