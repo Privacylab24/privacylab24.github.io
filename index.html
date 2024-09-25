@@ -27,14 +27,49 @@
     </header>
     
       <!-- Facebook Like -->
-   <div id="fb-root"></div>
+<div id="fb-root"></div>
 <div class="fb-like" data-href="https://privacylab31.github.io/privacylab30/" 
      data-width="" data-layout="standard" 
      data-action="like" data-size="small" 
      data-share="true"></div>
-    <!-- Facebook SDK (deferred loading based on consent) -->
+
+<!-- Facebook SDK placeholder (deferred loading based on consent) -->
 <script type="text/plain" class="optanon-category-C0005" async defer crossorigin="anonymous"
     src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v20.0"></script>
+
+<script>
+  // Function to dynamically load the Facebook SDK
+  function loadFacebookSDK() {
+    var script = document.createElement('script');
+    script.src = "https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v20.0";
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+
+    // Once the script is loaded, render the Facebook Like button
+    script.onload = function() {
+      if (typeof FB !== "undefined") {
+        FB.XFBML.parse(); // Render fb-like button
+      }
+    };
+  }
+
+  // Assuming your CMP (e.g., OneTrust) provides consent status
+  if (typeof Optanon !== "undefined" && Optanon.IsAlertBoxClosed()) {
+    // Load Facebook SDK if consent for the marketing category is given
+    if (Optanon.GetConsentState().Categories.C0005 === true) {
+      loadFacebookSDK();
+    }
+  }
+
+  // Optional: Listen for consent updates and load Facebook SDK when the user consents
+  document.addEventListener('OneTrustGroupsUpdated', function(event) {
+    if (Optanon.GetConsentState().Categories.C0005 === true) {
+      loadFacebookSDK();
+    }
+  });
+</script>
+
 
     <!-- Navigation Menu Section -->
     <nav class="navbar">
