@@ -27,16 +27,11 @@
     </header>
     
       <!-- Facebook Like -->
-<div id="fb-root"></div>
-<div class="fb-like" data-href="https://privacylab31.github.io/privacylab30/" 
-     data-width="" data-layout="standard" 
-     data-action="like" data-size="small" 
-     data-share="true"></div>
-
-<!-- Facebook SDK placeholder (deferred loading based on consent) -->
+<!-- Facebook SDK (deferred loading based on consent) -->
 <script type="text/plain" class="optanon-category-C0005" async defer crossorigin="anonymous"
     src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v20.0"></script>
 
+<!-- JavaScript to Load Facebook SDK After Consent -->
 <script>
   // Function to dynamically load the Facebook SDK
   function loadFacebookSDK() {
@@ -54,15 +49,14 @@
     };
   }
 
-  // Assuming your CMP (e.g., OneTrust) provides consent status
+  // Check if user has consented to marketing cookies and load the SDK accordingly
   if (typeof Optanon !== "undefined" && Optanon.IsAlertBoxClosed()) {
-    // Load Facebook SDK if consent for the marketing category is given
     if (Optanon.GetConsentState().Categories.C0005 === true) {
       loadFacebookSDK();
     }
   }
 
-  // Optional: Listen for consent updates and load Facebook SDK when the user consents
+  // Listen for consent updates and load the SDK when user gives consent
   document.addEventListener('OneTrustGroupsUpdated', function(event) {
     if (Optanon.GetConsentState().Categories.C0005 === true) {
       loadFacebookSDK();
@@ -109,8 +103,14 @@
             <a href="#" id="cookies-notice-link">Cookies Policy</a>
             <a href="#" id="privacy-notice-link">Privacy Policy</a>
             <a href="cookies.html">Cookies List</a>
-    
     </footer>
+<footer style="position: relative; height: 100px; background-color: #f8f9fa; padding: 20px;">
+    <div id="fb-root"></div>
+    <div class="fb-like" data-href="https://privacylab31.github.io/privacylab30/" 
+         data-width="" data-layout="standard" 
+         data-action="like" data-size="small" 
+         data-share="true"></div>
+</footer>
 
     <!-- Including the additional JavaScript files -->
     <script src="script.js"></script>
