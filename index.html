@@ -129,69 +129,56 @@ document.cookie = “Analytics Cookies” + ”=”  +”Cookies Here!”;
          data-width="" data-layout="standard" 
          data-action="like" data-size="small" 
          data-share="true"></div>
-
-        // Set a cookie
-
+</footer>
+       <!-- JavaScript Code -->
+<script>
 // Example: Set the language preference to English
-<div>
 setLanguagePreference('en-US');
+
 function setSessionCookie(sessionId) {
     document.cookie = `session_id=${sessionId}; path=/; domain=privacylab24.github.io; expires=${new Date(Date.now() + 24*60*60*1000).toUTCString()}; SameSite=Lax`;
 }
-    </div>
-<div>
+
 function getSessionCookie() {
     return document.cookie.split('; ').find(row => row.startsWith('session_id=')).split('=')[1];
 }
-</div>
+
 // Example: Set a unique session ID for the user
-    <div>
 setSessionCookie('abc12345xyz');
+
 function setLocationPreference(location) {
     document.cookie = `location_preference=${location}; path=/; domain=privacylab24.github.io; expires=${new Date(Date.now() + 365*24*60*60*1000).toUTCString()}; SameSite=Lax`;
 }
-        </div>
-<div>
+
 function getLocationPreference() {
     return document.cookie.split('; ').find(row => row.startsWith('location_preference=')).split('=')[1];
 }
-</div>
+
 // Example: Set the location preference to US
-    <div>
 setLocationPreference('US');
+
 function setLoginStatus(status) {
     document.cookie = `login_status=${status}; path=/; domain=privacylab24.github.io; expires=${new Date(Date.now() + 1*24*60*60*1000).toUTCString()}; SameSite=Lax`;
 }
-        </div>
-<div>
+
 function getLoginStatus() {
     return document.cookie.split('; ').find(row => row.startsWith('login_status=')).split('=')[1];
 }
-</div>
+
 // Example: Set the login status to "logged_in"
-    <div>
 setLoginStatus('logged_in');
+
 function setConsentCookie(consent) {
     document.cookie = `consent_cookie=${consent}; path=/; domain=privacylab24.github.io; expires=${new Date(Date.now() + 365*24*60*60*1000).toUTCString()}; SameSite=Lax`;
 }
-<div>
-function getConsentCookie() {
-    return document.cookie.split('; ').find(row => row.startsWith('consent_cookie=')).split('=')[1];
-}
-// Example: Set the consent status to "accepted"
-setConsentCookie('accepted');
-function setConsentCookie(consent) {
-    document.cookie = `consent_cookie=${consent}; path=/; domain=privacylab24.github.io; expires=${new Date(Date.now() + 365*24*60*60*1000).toUTCString()}; SameSite=Lax`;
-}
+
 function getConsentCookie() {
     return document.cookie.split('; ').find(row => row.startsWith('consent_cookie=')).split('=')[1];
 }
 
 // Example: Set the consent status to "accepted"
 setConsentCookie('accepted');
-</div>
-        
-</footer>
+</script>
 
     <!-- Including the additional JavaScript files -->
     <script src="script.js"></script>
