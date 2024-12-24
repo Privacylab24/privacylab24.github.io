@@ -71,6 +71,12 @@
         .button.selected {
             background-color: #4CAF50;
             color: #fff;
+            border-color: #4CAF50;
+        }
+
+        .button:not(.selected) {
+            color: #E74C3C; /* Red color for unselected */
+            border-color: #E74C3C; /* Red border for unselected */
         }
 
         .button:hover {
@@ -81,11 +87,12 @@
             margin-right: 10px;
         }
 
-        .button .icon:before {
-            content: "✔";
-            font-size: 18px;
-            display: inline-block;
-            color: inherit;
+        .button.selected .icon:before {
+            content: "✔"; /* Checkmark for selected */
+        }
+
+        .button:not(.selected) .icon:before {
+            content: "✖"; /* Cross for unselected */
         }
 
         .submit-button {
