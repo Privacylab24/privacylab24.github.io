@@ -28,12 +28,18 @@
         .header {
             font-size: 16px;
             color: #333;
-            margin-bottom: 15px;
+            margin-bottom: 5px;
         }
 
         .header span {
             font-weight: bold;
             color: #4CAF50;
+        }
+
+        .instruction {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
         }
 
         h2 {
@@ -82,21 +88,6 @@
             color: inherit;
         }
 
-        .footer {
-            margin-top: 20px;
-            font-size: 14px;
-            color: #666;
-        }
-
-        .footer a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
         .submit-button {
             margin-top: 20px;
             padding: 10px 20px;
@@ -120,6 +111,12 @@
             Customised preference for <span>abc@xxx.com</span>
         </div>
 
+        <!-- Instruction Text -->
+        <div class="instruction">
+            To submit your changes, click the Change Preferences button at the bottom. 
+            If you have any questions, email <a href="mailto:dpr@xxx.com" style="color: #4CAF50; text-decoration: none;">dpr@xxx.com</a>.
+        </div>
+
         <!-- Title -->
         <h2>Select your preferred way(s) to be contacted by a OneTrust industry expert</h2>
 
@@ -141,12 +138,6 @@
 
         <!-- Submit Button -->
         <button class="submit-button" onclick="submitPreferences()">Change Preferences</button>
-
-        <!-- Footer Text -->
-        <div class="footer">
-            To submit your changes, click the Change Preferences button at the bottom. 
-            If you have any questions, email <a href="mailto:dpr@xxx.com">dpr@xxx.com</a>.
-        </div>
     </div>
 
     <script>
