@@ -29,7 +29,11 @@
     </div>
 
     <button class="save-btn" onclick="savePreferences()">Save Preferences</button>
-
+<div id="onetrust-preference-center"></div>
+<script>
+    // Trigger the OneTrust Preference Center dynamically
+    window.Optanon && Optanon.ToggleInfoDisplay();
+</script>
     <script>
         function savePreferences() {
             const analytics = document.getElementById('analytics').checked;
