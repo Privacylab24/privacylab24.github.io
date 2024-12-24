@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Preferences</title>
+    <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-domain-script="your-ot-domain"></script>
+</head>
+<body>
+    <div id="onetrust-preference-center"></div>
+    <script>
+        // Initialize the OneTrust Preference Center
+        window.Optanon && Optanon.ToggleInfoDisplay();
+    </script>
+</body>
+</html>
