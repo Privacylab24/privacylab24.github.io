@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preferred Contact Methods</title>
+    <title>Customised Preferences</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,7 +16,24 @@
         }
 
         .container {
+            width: 90%;
+            max-width: 500px;
             text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .header span {
+            font-weight: bold;
+            color: #4CAF50;
         }
 
         h2 {
@@ -26,6 +43,7 @@
 
         .button-container {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
         }
@@ -63,11 +81,49 @@
             display: inline-block;
             color: inherit;
         }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .submit-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .submit-button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Header with Email Address -->
+        <div class="header">
+            Customised preference for <span>abc@xxx.com</span>
+        </div>
+
+        <!-- Title -->
         <h2>Select your preferred way(s) to be contacted by a OneTrust industry expert</h2>
+
+        <!-- Buttons for Preferences -->
         <div class="button-container">
             <div class="button selected" id="emailButton" onclick="toggleSelection('emailButton')">
                 <span class="icon"></span> Email
@@ -75,6 +131,21 @@
             <div class="button selected" id="phoneButton" onclick="toggleSelection('phoneButton')">
                 <span class="icon"></span> Phone
             </div>
+            <div class="button" id="whatsappButton" onclick="toggleSelection('whatsappButton')">
+                <span class="icon"></span> WhatsApp
+            </div>
+            <div class="button" id="smsButton" onclick="toggleSelection('smsButton')">
+                <span class="icon"></span> SMS/Text
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button class="submit-button" onclick="submitPreferences()">Change Preferences</button>
+
+        <!-- Footer Text -->
+        <div class="footer">
+            To submit your changes, click the Change Preferences button at the bottom. 
+            If you have any questions, email <a href="mailto:dpr@xxx.com">dpr@xxx.com</a>.
         </div>
     </div>
 
@@ -82,6 +153,20 @@
         function toggleSelection(buttonId) {
             const button = document.getElementById(buttonId);
             button.classList.toggle("selected");
+        }
+
+        function submitPreferences() {
+            const emailSelected = document.getElementById('emailButton').classList.contains('selected');
+            const phoneSelected = document.getElementById('phoneButton').classList.contains('selected');
+            const whatsappSelected = document.getElementById('whatsappButton').classList.contains('selected');
+            const smsSelected = document.getElementById('smsButton').classList.contains('selected');
+
+            console.log('Email Preference:', emailSelected ? 'Selected' : 'Not Selected');
+            console.log('Phone Preference:', phoneSelected ? 'Selected' : 'Not Selected');
+            console.log('WhatsApp Preference:', whatsappSelected ? 'Selected' : 'Not Selected');
+            console.log('SMS/Text Preference:', smsSelected ? 'Selected' : 'Not Selected');
+
+            alert('Your preferences have been updated!');
         }
     </script>
 </body>
