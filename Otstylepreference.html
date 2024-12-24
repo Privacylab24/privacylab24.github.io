@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preferred Contact Methods</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            height: 60px;
+            border: 2px solid #4CAF50;
+            border-radius: 8px;
+            background-color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .button.selected {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        .button:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .button .icon {
+            margin-right: 10px;
+        }
+
+        .button .icon:before {
+            content: "✔";
+            font-size: 18px;
+            display: inline-block;
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Select your preferred way(s) to be contacted by a OneTrust industry expert</h2>
+        <div class="button-container">
+            <div class="button selected" id="emailButton" onclick="toggleSelection('emailButton')">
+                <span class="icon"></span> Email
+            </div>
+            <div class="button selected" id="phoneButton" onclick="toggleSelection('phoneButton')">
+                <span class="icon"></span> Phone
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSelection(buttonId) {
+            const button = document.getElementById(buttonId);
+            button.classList.toggle("selected");
+        }
+    </script>
+</body>
+</html>
