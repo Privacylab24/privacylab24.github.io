@@ -20,31 +20,34 @@
             max-width: 500px;
             text-align: center;
             background: #fff;
-            padding: 20px;
+            padding: 0;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .header {
-            font-size: 16px;
-            color: #333;
-            margin-bottom: 5px;
+        /* Header Section with Teal Background */
+        .header-section {
+            background-color: #008080; /* Teal color */
+            color: white;
+            padding: 20px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
         }
 
-        .header span {
+        .header-section .email {
             font-weight: bold;
-            color: #4CAF50;
+            color: #00FF00; /* Bright green color for email */
         }
 
-        .instruction {
+        .header-section .instruction {
             font-size: 14px;
-            color: #666;
-            margin-bottom: 20px;
+            color: #DFF5F5; /* Lightened white for instruction text */
         }
 
         h2 {
             font-size: 18px;
-            margin-bottom: 20px;
+            margin: 20px 0;
+            color: #333;
         }
 
         .button-container {
@@ -113,15 +116,15 @@
 </head>
 <body>
     <div class="container">
-        <!-- Header with Email Address -->
-        <div class="header">
-            Customised preference for <span>abc@xxx.com</span>
-        </div>
-
-        <!-- Instruction Text -->
-        <div class="instruction">
-            To submit your changes, click the Change Preferences button at the bottom. 
-            If you have any questions, email <a href="mailto:dpr@xxx.com" style="color: #4CAF50; text-decoration: none;">dpr@xxx.com</a>.
+        <!-- Header Section with Teal Background -->
+        <div class="header-section">
+            <div class="header">
+                Customised preference for <span class="email">abc@xxx.com</span>
+            </div>
+            <div class="instruction">
+                To submit your changes, click the Change Preferences button at the bottom. 
+                If you have any questions, email <a href="mailto:dpr@xxx.com" style="color: #DFF5F5; text-decoration: none;">dpr@xxx.com</a>.
+            </div>
         </div>
 
         <!-- Title -->
