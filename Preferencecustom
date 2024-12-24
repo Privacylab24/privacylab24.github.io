@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Preferences</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .section { margin-bottom: 20px; }
+        .toggle { margin-left: 10px; }
+        .save-btn { margin-top: 20px; padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Manage Your Preferences</h1>
+
+    <div class="section">
+        <label>
+            <input type="checkbox" id="analytics" class="toggle">
+            Analytics Cookies
+        </label>
+        <p>Allow us to collect data about your website usage.</p>
+    </div>
+
+    <div class="section">
+        <label>
+            <input type="checkbox" id="marketing" class="toggle">
+            Marketing Preferences
+        </label>
+        <p>Receive personalized offers and ads.</p>
+    </div>
+
+    <button class="save-btn" onclick="savePreferences()">Save Preferences</button>
+
+    <script>
+        function savePreferences() {
+            const analytics = document.getElementById('analytics').checked;
+            const marketing = document.getElementById('marketing').checked;
+
+            // Send preferences to your backend or OneTrust API
+            console.log("Analytics:", analytics, "Marketing:", marketing);
+            alert("Preferences Saved!");
+        }
+    </script>
+</body>
+</html>
