@@ -25,9 +25,9 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        /* Header Section with Green Background */
+        /* Header Section with Teal Background */
         .header-section {
-            background-color: #4CAF50; /* Green color */
+            background-color: #008080; /* Teal color */
             color: white;
             padding: 20px;
             border-top-left-radius: 10px;
@@ -113,6 +113,44 @@
             background-color: #45a049;
         }
     </style>
+    <script>
+        function toggleSelection(buttonId) {
+            const button = document.getElementById(buttonId);
+            button.classList.toggle("selected");
+        }
+
+        function submitPreferences() {
+            const emailSelected = document.getElementById('emailButton').classList.contains('selected');
+            const phoneSelected = document.getElementById('phoneButton').classList.contains('selected');
+            const whatsappSelected = document.getElementById('whatsappButton').classList.contains('selected');
+            const smsSelected = document.getElementById('smsButton').classList.contains('selected');
+
+            console.log('Email Preference:', emailSelected ? 'Selected' : 'Not Selected');
+            console.log('Phone Preference:', phoneSelected ? 'Selected' : 'Not Selected');
+            console.log('WhatsApp Preference:', whatsappSelected ? 'Selected' : 'Not Selected');
+            console.log('SMS/Text Preference:', smsSelected ? 'Selected' : 'Not Selected');
+
+            alert('Your preferences have been updated!');
+        }
+
+        function redirectToOneTrust() {
+            // OneTrust Magic URL
+            const oneTrustUrl = "https://privacyportal-in.onetrust.com/ui/#/preferences/multipage/token/4dae8603-07e4-4c89-ae2a-c983cd841650/";
+
+            // Current page URL to return after authentication
+            const returnUrl = encodeURIComponent(window.location.href);
+
+            // Check if the page has a 'return' query parameter (indicating the user came back from OneTrust)
+            const urlParams = new URLSearchParams(window.location.search);
+            if (!urlParams.has('return')) {
+                // Redirect to OneTrust for authentication
+                window.location.href = `${oneTrustUrl}?returnUrl=${returnUrl}`;
+            }
+        }
+
+        // Trigger redirection on page load if not authenticated
+        window.onload = redirectToOneTrust;
+    </script>
 </head>
 <body>
     <div class="container">
@@ -128,7 +166,7 @@
         </div>
 
         <!-- Title -->
-        <h2>Select your preferred way(s) to be contacted by us</h2>
+        <h2>Select your preferred way(s) to be contacted by a OneTrust industry expert</h2>
 
         <!-- Buttons for Preferences -->
         <div class="button-container">
@@ -149,26 +187,5 @@
         <!-- Submit Button -->
         <button class="submit-button" onclick="submitPreferences()">Change Preferences</button>
     </div>
-
-    <script>
-        function toggleSelection(buttonId) {
-            const button = document.getElementById(buttonId);
-            button.classList.toggle("selected");
-        }
-
-        function submitPreferences() {
-            const emailSelected = document.getElementById('emailButton').classList.contains('selected');
-            const phoneSelected = document.getElementById('phoneButton').classList.contains('selected');
-            const whatsappSelected = document.getElementById('whatsappButton').classList.contains('selected');
-            const smsSelected = document.getElementById('smsButton').classList.contains('selected');
-
-            console.log('Email Preference:', emailSelected ? 'Selected' : 'Not Selected');
-            console.log('Phone Preference:', phoneSelected ? 'Selected' : 'Not Selected');
-            console.log('WhatsApp Preference:', whatsappSelected ? 'Selected' : 'Not Selected');
-            console.log('SMS/Text Preference:', smsSelected ? 'Selected' : 'Not Selected');
-
-            alert('Your preferences have been updated!');
-        }
-    </script>
 </body>
 </html>
