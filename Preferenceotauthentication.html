@@ -8,27 +8,32 @@
         /* Same styles as before */
     </style>
     <script>
-        function redirectToOneTrust() {
+        function handleRedirection() {
             // OneTrust Magic URL
-           // const oneTrustUrl = "https://privacyportal-in.onetrust.com/ui/#/preferences/multipage/token/4dae8603-07e4-4c89-ae2a-c983cd841650/";
-             const oneTrustUrl = "https://privacyportal-in.onetrust.com/ui/#/preferences/multipage/login/4dae8603-07e4-4c89-ae2a-c983cd841650/";
-            // Current page URL to return after authentication
+            const oneTrustUrl = "https://privacyportal-in.onetrust.com/ui/#/preferences/multipage/token/4dae8603-07e4-4c89-ae2a-c983cd841650/";
+
+            // Current page URL
             const currentPage = window.location.href;
 
-            // Check if the page already contains a "authenticated=true" parameter
+            // Parse the current URL to check for the "returnUrl" parameter
             const urlParams = new URLSearchParams(window.location.search);
-            if (!urlParams.has('authenticated')) {
-                // If not authenticated, redirect to OneTrust with the current page as the return URL
-                const returnUrl = encodeURIComponent(currentPage + "?authenticated=true");
+
+            // If the "returnUrl" parameter is NOT present, redirect to OneTrust
+            if (!urlParams.has("returnUrlHandled")) {
+                // Append a marker to avoid redirection loops
+                const returnUrl = encodeURIComponent(currentPage + "?returnUrlHandled=true");
+                console.log("Redirecting to OneTrust with returnUrl:", returnUrl);
+
+                // Redirect to OneTrust
                 window.location.href = `${oneTrustUrl}?returnUrl=${returnUrl}`;
             } else {
-                console.log("Returned from OneTrust authentication.");
-                // Proceed to load the page normally
+                // If "returnUrlHandled" is present, proceed to load the preferences page
+                console.log("Returned from OneTrust. Proceeding to load preferences...");
             }
         }
 
-        // Trigger redirection or return handling on page load
-        window.onload = redirectToOneTrust;
+        // Handle redirection on page load
+        window.onload = handleRedirection;
     </script>
 </head>
 <body>
