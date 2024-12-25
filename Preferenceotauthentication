@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customised Preferences</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            background: #fff;
+            padding: 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header Section with Green Background */
+        .header-section {
+            background-color: #4CAF50; /* Green color */
+            color: white;
+            padding: 20px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .header-section .email {
+            font-weight: bold;
+            color: #00FF00; /* Bright green color for email */
+        }
+
+        .header-section .instruction {
+            font-size: 14px;
+            color: #DFF5F5; /* Lightened white for instruction text */
+        }
+
+        h2 {
+            font-size: 18px;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            height: 60px;
+            border: 2px solid #4CAF50;
+            border-radius: 8px;
+            background-color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .button.selected {
+            background-color: #4CAF50;
+            color: #fff;
+            border-color: #4CAF50;
+        }
+
+        .button:not(.selected) {
+            color: #E74C3C; /* Red color for unselected */
+            border-color: #E74C3C; /* Red border for unselected */
+        }
+
+        .button:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .button .icon {
+            margin-right: 10px;
+        }
+
+        .button.selected .icon:before {
+            content: "✔"; /* Checkmark for selected */
+        }
+
+        .button:not(.selected) .icon:before {
+            content: "✖"; /* Cross for unselected */
+        }
+
+        .submit-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section with Teal Background -->
+        <div class="header-section">
+            <div class="header">
+                Customised preference for <span class="email">abc@xxx.com</span>
+            </div>
+            <div class="instruction">
+                To submit your changes, click the Change Preferences button at the bottom. 
+                If you have any questions, email <a href="mailto:dpr@xxx.com" style="color: #DFF5F5; text-decoration: none;">dpr@xxx.com</a>.
+            </div>
+        </div>
+
+        <!-- Title -->
+        <h2>Select your preferred way(s) to be contacted by us</h2>
+
+        <!-- Buttons for Preferences -->
+        <div class="button-container">
+            <div class="button selected" id="emailButton" onclick="toggleSelection('emailButton')">
+                <span class="icon"></span> Email
+            </div>
+            <div class="button selected" id="phoneButton" onclick="toggleSelection('phoneButton')">
+                <span class="icon"></span> Phone
+            </div>
+            <div class="button" id="whatsappButton" onclick="toggleSelection('whatsappButton')">
+                <span class="icon"></span> WhatsApp
+            </div>
+            <div class="button" id="smsButton" onclick="toggleSelection('smsButton')">
+                <span class="icon"></span> SMS/Text
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button class="submit-button" onclick="submitPreferences()">Change Preferences</button>
+    </div>
+
+    <script>
+        function toggleSelection(buttonId) {
+            const button = document.getElementById(buttonId);
+            button.classList.toggle("selected");
+        }
+
+        function submitPreferences() {
+            const emailSelected = document.getElementById('emailButton').classList.contains('selected');
+            const phoneSelected = document.getElementById('phoneButton').classList.contains('selected');
+            const whatsappSelected = document.getElementById('whatsappButton').classList.contains('selected');
+            const smsSelected = document.getElementById('smsButton').classList.contains('selected');
+
+            console.log('Email Preference:', emailSelected ? 'Selected' : 'Not Selected');
+            console.log('Phone Preference:', phoneSelected ? 'Selected' : 'Not Selected');
+            console.log('WhatsApp Preference:', whatsappSelected ? 'Selected' : 'Not Selected');
+            console.log('SMS/Text Preference:', smsSelected ? 'Selected' : 'Not Selected');
+
+            alert('Your preferences have been updated!');
+        }
+    </script>
+</body>
+</html>
