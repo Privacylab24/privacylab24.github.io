@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customised Preferences</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            background: #fff;
+            padding: 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden; /* Mimics iframe isolation */
+        }
+
+        .header-section {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+        }
+
+        .header-section .email {
+            font-weight: bold;
+            color: #00FF00;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        .button-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            padding: 0 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px;
+            background-color: #fff;
+            border: 2px solid #4CAF50;
+            color: #E74C3C;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            user-select: none;
+            transition: all 0.3s;
+        }
+
+        .button.selected {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        .submit-button {
+            margin: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-section">
+            Customised preference for <span class="email">abc@xxx.com</span>
+        </div>
+        <h2>Select your preferred way(s) to be contacted by us</h2>
+        <div class="button-container">
+            <div class="button selected" id="emailButton" onclick="this.classList.toggle('selected')">
+                Email
+            </div>
+            <div class="button selected" id="phoneButton" onclick="this.classList.toggle('selected')">
+                Phone
+            </div>
+            <div class="button" id="whatsappButton" onclick="this.classList.toggle('selected')">
+                WhatsApp
+            </div>
+            <div class="button" id="smsButton" onclick="this.classList.toggle('selected')">
+                SMS/Text
+            </div>
+        </div>
+        <button class="submit-button">Change Preferences</button>
+    </div>
+</body>
+</html>
