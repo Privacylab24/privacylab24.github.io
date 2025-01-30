@@ -44,6 +44,23 @@
             font-size: 14px;
             cursor: pointer;
         }
+        .risk-level {
+    font-weight: bold;
+    text-align: center;
+    padding: 8px;
+    font-size: 14px;
+    line-height: 1.2;
+    white-space: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 30px;
+}
+
+.low { background-color: green; color: white; }
+.medium { background-color: orange; color: black; }
+.high { background-color: red; color: white; }
+.very-high { background-color: purple; color: white; }
     </style>
 </head>
 <body>
@@ -155,51 +172,91 @@
         }
 
         function calculateRisk(selectElement) {
-            let row = selectElement.closest("tr");
-            let severity = parseInt(row.cells[5].querySelector("select").value);
-            let likelihood = parseInt(row.cells[6].querySelector("select").value);
-            let riskScore = severity * likelihood;
+    let row = selectElement.closest("tr");
+    let severity = parseInt(row.cells[5].querySelector("select").value);
+    let likelihood = parseInt(row.cells[6].querySelector("select").value);
 
-            const riskMatrix = {
-                1: {1: "Low", 2: "Low", 3: "Low", 4: "Low", 5: "Medium"},
-                2: {1: "Low", 2: "Low", 3: "Medium", 4: "Medium", 5: "High"},
-                3: {1: "Low", 2: "Medium", 3: "Medium", 4: "High", 5: "High"},
-                4: {1: "Low", 2: "Medium", 3: "High", 4: "Very High", 5: "Very High"},
-                5: {1: "Medium", 2: "High", 3: "High", 4: "Very High", 5: "Very High"}
-            };
+    const riskMatrix = {
+        1: {1: "Low", 2: "Low", 3: "Low", 4: "Low", 5: "Medium"},
+        2: {1: "Low", 2: "Low", 3: "Medium", 4: "Medium", 5: "High"},
+        3: {1: "Low", 2: "Medium", 3: "Medium", 4: "High", 5: "High"},
+        4: {1: "Low", 2: "Medium", 3: "High", 4: "Very High", 5: "Very High"},
+        5: {1: "Medium", 2: "High", 3: "High", 4: "Very High", 5: "Very High"}
+    };
 
-            let riskLevelText = riskMatrix[severity][likelihood];
+    let riskLevelText = riskMatrix[severity][likelihood];
 
-            row.cells[7].querySelector(".risk-level").textContent = riskLevelText;
-        }
+    let riskCell = row.cells[7].querySelector(".risk-level");
+    riskCell.textContent = riskLevelText;
+    
+    // Assign correct color class
+    riskCell.className = "risk-level " + getRiskClass(riskLevelText);
+}
 
-        function saveData() {
-            let rows = document.querySelectorAll("#riskTable tr:not(:first-child)");
-            riskData = [];
+// Function to get the color class based on risk level
+function getRiskClass(riskLevel) {
+    if (riskLevel === "Low") return "low";
+    if (riskLevel === "Medium") return "medium";
+    if (riskLevel === "High") return "high";
+    if (riskLevel === "Very High") return "very-high";
+    return "";
+}
 
-            rows.forEach(row => {
-                let risk = {
-                    riskID: row.cells[1].textContent,
-                    category: row.cells[2].querySelector("select").value,
-                    question: row.cells[3].querySelector("select").value,
-                    response: row.cells[4].querySelector("textarea").value,
-                    severity: row.cells[5].querySelector("select").value,
-                    likelihood: row.cells[6].querySelector("select").value,
-                    riskRating: row.cells[7].textContent,
-                    management: row.cells[8].querySelector("input").value,
-                    owner: row.cells[9].querySelector("input").value
-                };
-                riskData.push(risk);
-            });
-        }
+// Function to save data
+function saveData() {
+    let rows = document.querySelectorAll("#riskTable tr:not(:first-child)");
+    riskData = [];
 
-        function showData() {
-            let displayTable = document.getElementById("displayTable");
-            riskData.forEach(data => {
-                let row = displayTable.insertRow(-1);
-                row.innerHTML = `<td>${data.riskID}</td><td>${data.category}</td><td>${data.question}</td><td>${data.response}</td><td>${data.severity}</td><td>${data.likelihood}</td><td>${data.riskRating}</td><td>${data.management}</td><td>${data.owner}</td>`;
-            });
-        }
+    rows.forEach(row => {
+        let risk = {
+            riskID: row.cells[1].textContent,
+            category: row.cells[2].querySelector("select").value,
+            question: row.cells[3].querySelector("select").value,
+            response: row.cells[4].querySelector("textarea").value,
+            severity: row.cells[5].querySelector("select").value,
+            likelihood: row.cells[6].querySelector("select").value,
+            riskRating: row.cells[7].textContent,
+            management: row.cells[8].querySelector("input").value,
+            owner: row.cells[9].querySelector("input").value
+        };
+        riskData.push(risk);
+    });
+}
+
+// Function to display saved data with color styling
+function showData() {
+    let displayTable = document.getElementById("displayTable");
+    
+    // Clear previous entries
+    displayTable.innerHTML = `
+        <tr>
+            <th>#</th>
+            <th>Risk ID</th>
+            <th>Category</th>
+            <th>Assessment Question</th>
+            <th>Response</th>
+            <th>Severity of Harm</th>
+            <th>Likelihood</th>
+            <th>Risk Rating</th>
+            <th>Risk Management Decision</th>
+            <th>Risk Owner</th>
+        </tr>`;
+
+    riskData.forEach((data, index) => {
+        let row = displayTable.insertRow(-1);
+        row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${data.riskID}</td>
+            <td>${data.category}</td>
+            <td>${data.question}</td>
+            <td>${data.response}</td>
+            <td>${data.severity}</td>
+            <td>${data.likelihood}</td>
+            <td><span class="risk-level ${getRiskClass(data.riskRating)}">${data.riskRating}</span></td>
+            <td>${data.management}</td>
+            <td>${data.owner}</td>`;
+    });
+}
     </script>
 
 </body>
