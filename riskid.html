@@ -137,31 +137,33 @@
             
             riskCounter++;
         }
+     function calculateRisk(selectElement) {
+    let row = selectElement.closest("tr");
+    let severity = parseInt(row.cells[5].querySelector("select").value);
+    let likelihood = parseInt(row.cells[6].querySelector("select").value);
+    
+    let riskScore = severity * likelihood;
 
-        function calculateRisk(selectElement) {
-            let row = selectElement.closest("tr");
-            let severity = parseInt(row.cells[5].querySelector("select").value);
-            let likelihood = parseInt(row.cells[6].querySelector("select").value);
-            let riskScore = severity * likelihood;
-            
-            let riskLevelText = "Low";
-            let riskClass = "low";
-            
-            if (riskScore >= 10 && riskScore < 15) {
-                riskLevelText = "Medium";
-                riskClass = "medium";
-            } else if (riskScore >= 15 && riskScore < 20) {
-                riskLevelText = "High";
-                riskClass = "high";
-            } else if (riskScore >= 20) {
-                riskLevelText = "Very High";
-                riskClass = "very-high";
-            }
-            
-            let riskCell = row.cells[7].querySelector(".risk-level");
-            riskCell.textContent = riskLevelText;
-            riskCell.className = `risk-level ${riskClass}`;
-        }
+    // Risk Rating Matrix (from attached table)
+    const riskMatrix = {
+        1: {1: "Low", 2: "Low", 3: "Low", 4: "Low", 5: "Medium"},
+        2: {1: "Low", 2: "Low", 3: "Medium", 4: "Medium", 5: "High"},
+        3: {1: "Low", 2: "Medium", 3: "Medium", 4: "High", 5: "High"},
+        4: {1: "Low", 2: "Medium", 3: "High", 4: "Very High", 5: "Very High"},
+        5: {1: "Medium", 2: "High", 3: "High", 4: "Very High", 5: "Very High"}
+    };
+
+    let riskLevelText = riskMatrix[severity][likelihood];
+
+    let riskClass = "low";
+    if (riskLevelText === "Medium") riskClass = "medium";
+    else if (riskLevelText === "High") riskClass = "high";
+    else if (riskLevelText === "Very High") riskClass = "very-high";
+
+    let riskCell = row.cells[7].querySelector(".risk-level");
+    riskCell.textContent = riskLevelText;
+    riskCell.className = `risk-level ${riskClass}`;
+}
 
         function saveData() {
             document.getElementById('saveMessage').style.display = 'block';
