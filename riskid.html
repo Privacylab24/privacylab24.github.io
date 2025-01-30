@@ -13,16 +13,22 @@
         h1 {
             text-align: center;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 10px;
-            text-align: left;
-        }
+    table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Ensures even column distribution */
+     }
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: left;
+    word-wrap: break-word; /* Prevents text from overflowing */
+    overflow: hidden;
+}
+        td input, td select, td textarea {
+    width: 100%;
+    box-sizing: border-box;
+}
         th {
             background-color: #f2f2f2;
         }
@@ -30,11 +36,26 @@
             width: 100%;
             padding: 5px;
         }
-        .risk-level {
-            font-weight: bold;
-            text-align: center;
-            padding: 10px;
-        }
+        textarea {
+    width: 100%;
+    height: 50px;
+    padding: 5px;
+    resize: vertical; /* Allow vertical expansion */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+.risk-level {
+    font-weight: bold;
+    text-align: center;
+    padding: 8px;
+    font-size: 14px; /* Adjusted font size */
+    line-height: 1.2; /* Ensures text wraps correctly */
+    white-space: normal; /* Allows text wrapping */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 30px;
+}
         .low { background-color: green; color: white; }
         .medium { background-color: orange; color: black; }
         .high { background-color: red; color: white; }
