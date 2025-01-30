@@ -13,17 +13,18 @@
         h1 {
             text-align: center;
         }
-    table {
+  table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed; /* Ensures even column distribution */
-     }
+    table-layout: fixed; /* Ensures uniform column width */
+}
 th, td {
     border: 1px solid black;
     padding: 10px;
     text-align: left;
-    word-wrap: break-word; /* Prevents text from overflowing */
-    overflow: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal; /* Ensures content wraps */
 }
         td input, td select, td textarea {
     width: 100%;
@@ -44,13 +45,24 @@ th, td {
     font-family: Arial, sans-serif;
     font-size: 14px;
 }
+        td textarea {
+    width: 100%;
+    height: 60px;
+    padding: 5px;
+    resize: vertical; /* Allow users to resize vertically */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    word-wrap: break-word;
+    white-space: pre-wrap; /* Ensures text wraps properly */
+    overflow-wrap: break-word; /* Breaks long words */
+}
 .risk-level {
     font-weight: bold;
     text-align: center;
     padding: 8px;
-    font-size: 14px; /* Adjusted font size */
-    line-height: 1.2; /* Ensures text wraps correctly */
-    white-space: normal; /* Allows text wrapping */
+    font-size: 14px; /* Adjusted size */
+    line-height: 1.2;
+    white-space: normal; /* Allows text to wrap */
     display: flex;
     align-items: center;
     justify-content: center;
