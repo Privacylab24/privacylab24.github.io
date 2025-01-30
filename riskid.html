@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDENTIFY & ASSESS PRIVACY RISK</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        select, input {
+            width: 100%;
+            padding: 5px;
+        }
+        .risk-level {
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+        }
+        .low { background-color: green; color: white; }
+        .medium { background-color: orange; color: black; }
+        .high { background-color: red; color: white; }
+        .very-high { background-color: purple; color: white; }
+        .button {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>IDENTIFY & ASSESS PRIVACY RISK</h1>
+    
+    <p><strong>Instruction:</strong> Performed by the project owner and assessed by the Data Protection Officer. Objective: To evaluate the potential risks to personal data.</p>
+    
+    <button class="button" onclick="addNewRow()">Add New Risk</button>
+    
+    <table id="riskTable">
+        <tr>
+            <th>#</th>
+            <th>Risk ID</th>
+            <th>Category</th>
+            <th>Assessment Question</th>
+            <th>Response</th>
+            <th>Severity of Harm</th>
+            <th>Likelihood</th>
+            <th>Risk Rating</th>
+            <th>Risk Management Decision</th>
+            <th>Risk Owner</th>
+        </tr>
+    </table>
+
+    <button class="button" onclick="saveData()">Save Data</button>
+    <p id="saveMessage" style="color: green; display: none;">Data has been saved successfully.</p>
+
+    <script>
+        let riskCounter = 1;
+
+        function addNewRow() {
+            let table = document.getElementById("riskTable");
+            let row = table.insertRow(-1);
+            
+            let cellIndex = row.insertCell(0);
+            let cellRiskID = row.insertCell(1);
+            let cellCategory = row.insertCell(2);
+            let cellQuestion = row.insertCell(3);
+            let cellResponse = row.insertCell(4);
+            let cellSeverity = row.insertCell(5);
+            let cellLikelihood = row.insertCell(6);
+            let cellRiskRating = row.insertCell(7);
+            let cellManagement = row.insertCell(8);
+            let cellOwner = row.insertCell(9);
+            
+            cellIndex.innerHTML = riskCounter;
+            cellRiskID.innerHTML = `DP-R-${String(riskCounter).padStart(3, '0')}`;
+            
+            cellCategory.innerHTML = `<select>
+                <option value="Consent">Consent</option>
+                <option value="Notification">Notification</option>
+                <option value="Purpose Limitation">Purpose Limitation</option>
+                <option value="Accuracy">Accuracy</option>
+                <option value="Protection">Protection</option>
+                <option value="Retention">Retention</option>
+                <option value="Data Breach Notification">Data Breach Notification</option>
+            </select>`;
+            
+            cellQuestion.innerHTML = `<select>
+                <option value="Is consent obtained?">Is consent obtained?</option>
+                <option value="Are purposes documented?">Are purposes documented?</option>
+                <option value="Is personal data secured?">Is personal data secured?</option>
+                <option value="Is retention policy followed?">Is retention policy followed?</option>
+            </select>`;
+            
+            cellResponse.innerHTML = `<input type="text">`;
+            
+            cellSeverity.innerHTML = `<select onchange="calculateRisk(this)">
+                <option value="1">Insignificant</option>
+                <option value="2">Negligible</option>
+                <option value="3">Limited</option>
+                <option value="4">Significant</option>
+                <option value="5">Maximum</option>
+            </select>`;
+            
+            cellLikelihood.innerHTML = `<select onchange="calculateRisk(this)">
+                <option value="1">Rare</option>
+                <option value="2">Doesn't seem possible</option>
+                <option value="3">Seems Difficult</option>
+                <option value="4">Seems Possible</option>
+                <option value="5">Seems Extremely Easy</option>
+            </select>`;
+            
+            cellRiskRating.innerHTML = `<span class="risk-level low">Low</span>`;
+            
+            cellManagement.innerHTML = `<input type="text">`;
+            
+            cellOwner.innerHTML = `<input type="text">`;
+            
+            riskCounter++;
+        }
+
+        function calculateRisk(selectElement) {
+            let row = selectElement.closest("tr");
+            let severity = parseInt(row.cells[5].querySelector("select").value);
+            let likelihood = parseInt(row.cells[6].querySelector("select").value);
+            let riskScore = severity * likelihood;
+            
+            let riskLevelText = "Low";
+            let riskClass = "low";
+            
+            if (riskScore >= 10 && riskScore < 15) {
+                riskLevelText = "Medium";
+                riskClass = "medium";
+            } else if (riskScore >= 15 && riskScore < 20) {
+                riskLevelText = "High";
+                riskClass = "high";
+            } else if (riskScore >= 20) {
+                riskLevelText = "Very High";
+                riskClass = "very-high";
+            }
+            
+            let riskCell = row.cells[7].querySelector(".risk-level");
+            riskCell.textContent = riskLevelText;
+            riskCell.className = `risk-level ${riskClass}`;
+        }
+
+        function saveData() {
+            document.getElementById('saveMessage').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
